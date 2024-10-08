@@ -1,9 +1,14 @@
 """
-groups_route.py
+This module defines the API routes for group management.
 
-Este módulo define las rutas para gestionar grupos en la API.
-Incluye funciones para obtener, crear, actualizar y eliminar grupos.
+Routes provided:
+- GET /groups: Retrieve a list of all groups.
+- GET /groups/{group_id}: Retrieve a specific group by ID.
+- POST /groups: Create a new group record.
+- PUT /groups/{group_id}: Update an existing group record by ID.
+- DELETE /groups/{group_id}: Delete a group record by ID.
 """
+
 
 from fastapi import APIRouter, Body
 from models.groups import Groups

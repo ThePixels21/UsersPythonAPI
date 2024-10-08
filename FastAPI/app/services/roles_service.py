@@ -83,7 +83,9 @@ class RolesService:
             )
             return created_role
         except IntegrityError as exc:
-            raise HTTPException(status_code=500, detail="An error occurred while creating the role") from exc
+            raise HTTPException(
+                status_code=500, detail="An error occurred while creating the role"
+            ) from exc
 
     @staticmethod
     def update_role(role_id: int, role: Roles = Body(...)):

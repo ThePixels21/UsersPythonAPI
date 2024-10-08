@@ -1,3 +1,14 @@
+"""
+This module defines the API routes for user group management.
+
+Routes provided:
+- GET /user_groups: Retrieve a list of all user groups.
+- GET /user_groups/{user_group_id}: Retrieve a specific user group by ID.
+- POST /user_groups: Create a new user group record.
+- PUT /user_groups/{user_group_id}: Update an existing user group record by ID.
+- DELETE /user_groups/{user_group_id}: Delete a user group record by ID.
+"""
+
 from fastapi import APIRouter, Body
 from models.user_groups import UserGroups
 from services.user_groups_service import UserGroupsService
@@ -44,20 +55,19 @@ def create_user_group(user_group: UserGroups = Body(...)):
     return UserGroupsService.create_user_group(user_group)
 
 @user_groups_route.put("/{user_group_id}")
-def update_user_group(user_group_id: int, user_group: UserGroups = Body(...)):
+def update_user_group(user_group_id:int,user_group: UserGroups = Body(...)):
     """
-    Update an existing user group record by their ID.
+        Update a user group by its ID with new user and group information
 
     Args:
         user_group_id (int): The ID of the user group to update.
+        user_group (UserGroups, optional): A body parameter containing the new user and group.
 
     Returns:
-        UserGroups: The updated user group record.
-
-    Raises:
-        HTTPException: 404 error if the user group with the given ID is not found.
+        UserGroupsModel: The updated user group object handled by the UserGroupsService.
     """
-    return UserGroupsService.update_user_group(user_group_id, user_group)
+    return UserGroupsService.update_user_group(user_group_id,user_group)
+
 
 @user_groups_route.delete("/{user_group_id}")
 def delete_user_group(user_group_id: int):
