@@ -6,7 +6,7 @@ including retrieving, creating, updating, and deleting user records from the dat
 from peewee import DoesNotExist, IntegrityError
 from fastapi import Body, HTTPException
 from models.user import User
-from database import UserModel
+from config.database import UserModel
 
 
 class UserService:

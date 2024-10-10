@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends
 from starlette.responses import RedirectResponse
 from helpers.api_key_auth import get_api_key
-from database import database as connection
+from config.database import database as connection
 from routes.user_route import user_route
 from routes.roles_route import roles_route
 from routes.groups_route import groups_route

@@ -6,7 +6,7 @@ including retrieving, creating, updating, and deleting user-group association re
 from peewee import DoesNotExist, IntegrityError
 from fastapi import Body, HTTPException
 from models.user_groups import UserGroups
-from database import UserGroupsModel
+from config.database import UserGroupsModel
 
 
 class UserGroupsService:

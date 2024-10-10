@@ -6,7 +6,7 @@ including retrieving, creating, updating, and deleting role records from the dat
 from peewee import DoesNotExist, IntegrityError
 from fastapi import Body, HTTPException
 from models.roles import Roles
-from database import RolesModel
+from config.database import RolesModel
 
 
 class RolesService:

@@ -9,9 +9,9 @@ services:
       - 3307:3306
     volumes:
       - ./MySQL/volumes:/var/lib/mysql
-    hostname: eam_database
+    hostname: database
     networks:
-      - net_eam_database
+      - net_database
     healthcheck:
         test: ["CMD","mysql", "-u", "root", "-proot"]
         interval: 30s
@@ -21,12 +21,12 @@ services:
   # - The adminer is a tool for managing content in databases.
   adminer:
     image: adminer
-    container_name: adminer_eam
+    container_name: adminer
     restart: always
     ports:
       - 8080:8080
     networks:
-      - net_eam_database
+      - net_database
 # --------------------------------------------------------------------
   # - fastapi refers to the container where the application backend will be stored.
   fastapi:
@@ -41,10 +41,10 @@ services:
       db:
         condition: service_healthy
     networks:
-      - net_eam_database
+      - net_database
 # --------------------------------------------------------------------
 
 networks:
-  net_eam_database:
+  net_database:
       driver: bridge
-      name: net_eam_database
+      name: net_database

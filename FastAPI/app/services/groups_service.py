@@ -6,7 +6,7 @@ including retrieving, creating, updating, and deleting group records from the da
 from peewee import DoesNotExist, IntegrityError
 from fastapi import Body, HTTPException
 from models.groups import Groups
-from database import GroupsModel
+from config.database import GroupsModel
 
 
 class GroupsService:
