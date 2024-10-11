@@ -55,8 +55,8 @@ async def read_root():
     return RedirectResponse(url="/docs")
 
 app.include_router(roles_route,
-                   prefix="/routes",
-                   tags=["Routes"],
+                   prefix="/roles",
+                   tags=["Roles"],
                    dependencies=[Depends(get_api_key)])
 app.include_router(user_route,
                    prefix="/users",

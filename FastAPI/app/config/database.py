@@ -6,7 +6,7 @@ between users, roles, and groups and includes cascading delete behaviors.
 
 import os
 from dotenv import load_dotenv
-from peewee import Model, MySQLDatabase, AutoField, CharField, ForeignKeyField
+from peewee import Model, MySQLDatabase, AutoField, CharField, ForeignKeyField, TextField
 from config.settings import DATABASE
 
 # Connect to the database using settings.py
@@ -29,8 +29,8 @@ class RolesModel(Model):
         description (CharField): Description of the role, maximum 50 characters.
     """
     id = AutoField(primary_key=True)
-    name = CharField(max_length=50)
-    description = CharField(max_length=50)
+    name = CharField(max_length=255)
+    description = TextField()
 
     class Meta:
         """
@@ -60,11 +60,11 @@ class UserModel(Model):
         role_id (ForeignKeyField): Foreign key to the RoleModel, representing the user's role.
     """
     id = AutoField(primary_key=True)
-    name = CharField(max_length=50)
-    email = CharField(max_length=100)
-    password = CharField(max_length=50)
-    profile_photo = CharField(max_length=50)
-    account_type = CharField(max_length=50)
+    name = CharField(max_length=255)
+    email = CharField(max_length=255)
+    password = CharField(max_length=255)
+    profile_photo = CharField(max_length=255)
+    account_type = CharField(max_length=255)
     role_id = ForeignKeyField(RolesModel, backref='users', on_delete='CASCADE')
 
     class Meta:
@@ -90,8 +90,8 @@ class GroupsModel(Model):
         description (CharField): Description of the group, maximum 50 characters.
     """
     id = AutoField(primary_key=True)
-    name = CharField(max_length=50)
-    description = CharField(max_length=50)
+    name = CharField(max_length=255)
+    description = TextField()
 
     class Meta:
         """
@@ -112,7 +112,6 @@ class UserGroupsModel(Model):
     Represents the association between a user and a group.
 
     Attributes:
-        id (AutoField): Unique identifier for the user-group relation.
         user_id (ForeignKeyField): Foreign key to UserModel, representing the user.
         group_id (ForeignKeyField): Foreign key to GroupModule, representing the group.
     """
