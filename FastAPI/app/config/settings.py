@@ -2,8 +2,8 @@
 This module defines the settings of the database.
 """
 
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 # Load variables using .env file
 load_dotenv()

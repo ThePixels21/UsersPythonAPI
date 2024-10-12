@@ -4,8 +4,6 @@ using the Peewee ORM for MySQL database interactions. It establishes relationshi
 between users, roles, and groups and includes cascading delete behaviors.
 """
 
-import os
-from dotenv import load_dotenv
 from peewee import Model, MySQLDatabase, AutoField, CharField, ForeignKeyField, TextField
 from config.settings import DATABASE
 
